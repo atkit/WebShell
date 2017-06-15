@@ -23,6 +23,10 @@ extension ViewController: NSGestureRecognizerDelegate {
      @wdg #44: Support Trackpad gestures
 	 */
 	func WSinitSwipeGestures() {
+		if !(WebShellSettings["navigateViaTrackpad"] as! Bool) {
+         	   return; // we don't need to intialize gestures if we don't need them (fixes selection on web with 3 fingers pan)
+	        }
+		
 		mainWebview.acceptsTouchEvents = true
 		self.view.acceptsTouchEvents = true
 
